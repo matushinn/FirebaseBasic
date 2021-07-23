@@ -37,6 +37,9 @@
                                 <state key="normal" title="決定">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="done:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8En-5Y-tr6"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -44,6 +47,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="AJU-d5-plm"/>
                     <connections>
+                        <outlet property="textField" destination="Rtb-NV-HzB" id="zk7-Wc-ur0"/>
                         <segue destination="wau-Vv-LcJ" kind="show" id="Mrr-CK-2Cu"/>
                     </connections>
                 </viewController>
@@ -54,7 +58,7 @@
         <!--View Controller-->
         <scene sceneID="Tta-hQ-utL">
             <objects>
-                <viewController id="wau-Vv-LcJ" customClass="ViewController" customModule="FireStoreBasic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="viewVC" id="wau-Vv-LcJ" customClass="ViewController" customModule="FireStoreBasic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8im-bi-77T">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,8 +95,11 @@
                                 <state key="normal" image="send">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="send:" destination="wau-Vv-LcJ" eventType="touchUpInside" id="Gw1-rz-gKC"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="あなたの名前を教えてください" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0U-dp-Xuc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0U-dp-Xuc">
                                 <rect key="frame" x="20" y="153" width="374" height="237"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
@@ -114,6 +121,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Eas-lr-iTf"/>
                     <connections>
+                        <outlet property="odaiLabel" destination="d0U-dp-Xuc" id="u87-pV-6gM"/>
+                        <outlet property="textView" destination="E2Q-bm-5Iz" id="x7V-I8-yhR"/>
                         <segue destination="c02-Uv-6tZ" kind="show" id="1Zb-ce-wep"/>
                     </connections>
                 </viewController>
