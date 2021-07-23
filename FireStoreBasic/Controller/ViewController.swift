@@ -8,6 +8,8 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import EMAlertController
+import FirebaseAuth
 
 class ViewController: UIViewController {
     /*
@@ -66,7 +68,42 @@ class ViewController: UIViewController {
         db2.collection("Answers").document().setData(
             ["answer":textView.text as Any,"userName":userName,"postDate":Date().timeIntervalSince1970])
         
+        //解答後、空にする
+        textView.text = ""
+        //アラート
+        let alert = EMAlertController(icon: UIImage(named: "check"), title: "投稿完了！", message: "みんなの回答を見てみよう！")
+        let doneAction = EMAlertAction(title: "OK", style: .normal)
+        alert.addAction(doneAction)
+        present(alert, animated: true, completion: nil)
+        textView.text = ""
+        
+        
     }
+    
+    @IBAction func checkAnswer(_ sender: Any) {
+        
+        //画面遷移する
+        let checkVC = self.storyboard?.instantiateViewController(identifier: "checkVC") as! CheckViewController
+        
+        checkVC.odaiString = odaiLabel.text!
+        
+        self.navigationController?.pushViewController(checkVC, animated: true)
+    }
+    @IBAction func logout(_ sender: Any) {
+        
+        let firebaseAuth = Auth.auth()
+        
+        do {
+            try firebaseAuth.signOut()
+        } catch let error as NSError{
+            print("error",error)
+        }
+        
+        //画面を戻す
+        self.navigationController?.popViewController(animated: true)
+        
+    }
+    
     
 }
 
