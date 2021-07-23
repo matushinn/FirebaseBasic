@@ -115,6 +115,7 @@
                         }
                         
                     }
+                    self.dataSets.reverse()
                     self.tableView.reloadData()
                 }
             }
@@ -150,9 +151,19 @@
         
         @IBAction func sendAction(_ sender: Any) {
             
+            //Firebase直接コメントを消すことも可能である。
+            if textfield.text?.isEmpty == true {
+                print("文字を書きなさい")
+                return
+            }
             db.collection("Answers").document(idString).collection("comments").document().setData(["userName":userName as Any,"comment":textfield.text! as Any,"postDate":Date().timeIntervalSince1970])
             
+            textfield.resignFirstResponder()
             textfield.text = ""
+        }
+        
+        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            textfield.resignFirstResponder()
         }
         
     }

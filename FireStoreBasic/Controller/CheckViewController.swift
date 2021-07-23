@@ -103,6 +103,8 @@ class CheckViewController: UIViewController,UITableViewDelegate,UITableViewDataS
                     }
                     
                 }
+                //新しいものを上に表示する
+                self.dataSets.reverse()
                 self.tableView.reloadData()
             }
         }
